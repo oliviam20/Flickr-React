@@ -1,6 +1,14 @@
-# Getting Started with Create React App
+# Flickr React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This uses the Flickr public api.
+
+```
+http://api.flickr.com/services/feeds/photos_public.gne
+```
+
+[Live Demo - Netlify](https://flickr-react-app.netlify.app/)
+
+_note to myself_ - deployed using cb86 account for heroku
 
 ## Available Scripts
 
@@ -11,60 +19,64 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Outcomes
 
-### `yarn test`
+1. Designed and implemented a responive web app.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Used React and Context for state management.
 
-### `yarn build`
+3. Used ReactCSSTransitionGroup for transitions.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Can fetch images from the flickr API and used the `tags` query parameter to search the query, and display the results.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. The app can locally run and deployed.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+6. One of the requirements requires the app to update results as user types. Initially had api calls every time user makes changes but this impacted performance as it was calling the api multiple times in quick succession. Resolved this by using `debounce` from `lodash` to ["group multiple sequential calls in a single one"](https://css-tricks.com/debouncing-throttling-explained-examples/).
 
-### `yarn eject`
+7. All interactive elements are keyboard accessible.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## UI Design
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+I did a simple, clean, and responsive design.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The layout consists of:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Logo
 
-## Learn More
+- Search bar
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Gallery in Masonry tiles, from 4 - 1 columns depending on screen size.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Toggle tags feature enabled on smaller screens.
 
-### Code Splitting
+- Loader and Error messages
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Testing
 
-### Analyzing the Bundle Size
+Tests are done with `Jest` and `Enzyme`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This combination was chosen because they are the most popular and are widely supported.
 
-### Making a Progressive Web App
+## Issues
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The api is blocked by CORS. To get around this, I used an open source service [get by cors](https://getbycors.herokuapp.com/) to get around this issue. This is deployed to heroku as a free service so it will be slow.
 
-### Advanced Configuration
+Strangely during development, test coverage were hidden despite passing the `--coverage` flag to `test` script. After some research and experimenting, it was discovered that git was the culprit to causing test issues. After changes were committed (even a single time), it will break the tests. Given the project size and limited time, I created a new app and moved the files in order to resolve this issue quickly. (To see test coverage, you might need to create a new CRA and copy the files into the new CRA to test).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Some tests had to be split up into different files in order to get them to work. E.g. `action.test.js` and `fetchImagesFail.test.js`. These are split because the pass and fail test will not work if the tests are in the same file.
 
-### Deployment
+Some tests were not picked up by the coverage report:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
+store.test.js
 
-### `yarn build` fails to minify
+index.tests.js
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Another issue with testing is that the test suite throws an error when trying to mount/shallow `App`. The issue was that the `App.js` was in its own `App` folder. Tried to move the file into `src` but it is still not resolved.
+
+## Other possible features
+
+1. Photo editor + download
+
+2. Social sharing options

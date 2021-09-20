@@ -1,0 +1,10 @@
+@import '../../variables.scss';
+
+.date {
+  font-size: 0.75rem;
+  color: $grey;
+
+  @media (min-width: $mobile) {
+    margin: 0;
+  }
+}

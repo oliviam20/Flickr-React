@@ -1,0 +1,55 @@
+@import '../../variables.scss';
+
+.card-list-wrapper {
+  padding: 1rem;
+  margin: 1rem auto;
+  max-width: 768px;
+  column-gap: 1.5rem;
+  column-count: 1;
+  overflow: hidden;
+
+  @media (min-width: $mobile) {
+    column-count: 2;
+    margin: 1rem;
+  }
+
+  @media (min-width: $tablet) {
+    column-count: 3;
+    max-width: 100%;
+  }
+
+  @media (min-width: $desktop) {
+    column-count: 4;
+  }
+
+  @media (min-width: $desktop-xl) {
+    width: $desktop-xl;
+  }
+}
+
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.fade-leave {
+  opacity: 1;
+}
+
+.fade-leave.fade-leave-active {
+  opacity: 0.01;
+  transition: opacity 1ms ease-in;
+}
+
+.fade-appear {
+  opacity: 0.01;
+}
+
+.fade-appear.fade-appear-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}

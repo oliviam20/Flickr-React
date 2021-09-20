@@ -1,0 +1,14 @@
+@import '../../variables.scss';
+
+h1 {
+  text-transform: uppercase;
+  transform: rotate(-5deg) skew(-5deg);
+  color: #fff;
+  font-size: 1.5rem;
+  margin: 1rem 0 0;
+
+  @media (min-width: $mobile) {
+    font-size: 3rem;
+    margin: 3rem 0 1rem;
+  }
+}

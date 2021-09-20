@@ -1,0 +1,36 @@
+@import '../variables.scss';
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #282c34;
+
+  p {
+    color: $primary-text;
+    margin: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  a {
+    color: $blue;
+  }
+
+  .App {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

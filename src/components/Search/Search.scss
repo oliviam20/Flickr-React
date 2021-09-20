@@ -1,0 +1,40 @@
+@import '../../variables.scss';
+
+.search-wrapper {
+  text-align: center;
+  position: sticky;
+  z-index: 9999;
+  top: 0;
+  padding: 2rem;
+  display: block;
+  backdrop-filter: blur(10px);
+  background-color: rgba(40, 44, 52, 0.5); 
+  width: 100%;
+
+  @media (max-width: $mobile) {
+    padding: 1rem;
+  }
+
+  .search-button {
+    background-color: transparent;
+    border: 0;
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+
+    @media (min-width: $mobile) {
+      top: 2.5rem;
+      right: 3rem;
+    }
+
+    @media (min-width: $desktop) {
+      position: relative;
+      top: 0;
+    }
+
+    i {
+      font-size: 1rem;
+      color: $grey;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@import '../../variables.scss';
+
+.tag-button {
+  border: 0;
+  background-color: transparent;
+  padding: 0.5rem;
+  background-color: $light-grey;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  margin-right: 0.65rem;
+  margin-top: 0.65rem;
+  cursor: pointer;
+}

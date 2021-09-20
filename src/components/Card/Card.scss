@@ -1,0 +1,54 @@
+@import '../../variables.scss';
+
+.card-wrapper {
+  // reset user agent styles
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  box-shadow: $box-shadow;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  width: 100%;
+
+  figcaption {
+    padding: 1rem;
+    overflow: hidden;
+
+    .toggle-tags-wrapper {
+      @media (min-width: $mobile) {
+        display: none;
+      }
+
+      .toggle-tags-button {
+        border: 1px solid $blue;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        transition: 0.3s;
+      }
+    }
+
+    .tag-list {
+      height: 0;
+      overflow: hidden;
+
+      @media (min-width: $mobile) {
+        height: auto;
+        overflow: visible;
+      }
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      
+      li {
+        display: inline-block;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@import '../../variables.scss';
+
+.search-bar {
+  border: 1px solid $border-grey;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  width: 100%;
+  background-color: #FFF;
+  box-shadow: $box-shadow;
+
+  @media (min-width: $desktop) {
+    width: $tablet;
+  }
+}
